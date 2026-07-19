@@ -32,13 +32,13 @@ async function main() {
 
   const output = {
     username: userData.User,
-    avatar: userData.UserPic,
+    avatar: userData.UserPic ? "https://media.retroachievements.org" + userData.UserPic : null,
     points: userData.TotalPoints,
     retropoints: userData.TotalTruePoints,
     lastUnlock: lastUnlockData[0]?.Title || null,
-    lastUnlockImage: lastUnlockData[0]?.BadgeURL ? "https://media.retroachievements.org/" + lastUnlockData[0].BadgeURL : null,
+    lastUnlockImage: lastUnlockData[0]?.BadgeURL ? "https://media.retroachievements.org" + lastUnlockData[0].BadgeURL : null,
     lastGamePlayed: lastGameData.Title || null,
-    lastGamePlayedImage: lastGameData.GameIcon ? "https://media.retroachievements.org/" + lastGameData.GameIcon : null,
+    lastGamePlayedImage: lastGameData.GameIcon ? "https://media.retroachievements.org" + lastGameData.GameIcon : null,
     numberOfGamesCompleted: numberOfGamesCompleted,
     updated: new Date().toISOString()
   };
