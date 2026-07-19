@@ -19,18 +19,25 @@ async function main() {
   const lastUnlockResponse = await fetch(lastUnlockUrl);
   const lastUnlockData = await lastUnlockResponse.json();
 
+  
   const lastGameUrl = `https://retroachievements.org/API/API_GetGame.php?i=${userData.LastGameID}&y=${secretkey}`;
-
+  
   const lastGameResponse = await fetch(lastGameUrl);
   const lastGameData = await lastGameResponse.json();
 
+  console.log("User Data:", userData);
+  console.log("Last Unlock Data:", lastUnlockData);
+  console.log("Last Game Data:", lastGameData);
+  
   const output = {
     username: userData.User,
     avatar: userData.UserPic,
     points: userData.TotalPoints,
     retropoints: userData.TotalTruePoints,
-    lastUnlock: lastUnlockData[0]?.AchievementName || null,
-    lastGamePlayed: lastGameData.GameName || null,
+    lastUnlock: lastUnlockData[0]?.Title || null,
+    lastUnlockImage: lastUnlockData[0]?.BadgeURL || null,
+    lastGamePlayed: lastGameData.Title || null,
+    lastGamePlayedImage: lastGameData.GameIcon || null,
     updated: new Date().toISOString()
   };
 
