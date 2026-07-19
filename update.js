@@ -4,7 +4,7 @@ const username = process.env.RA_USERNAME || process.argv[2];
 const secretkey = process.env.RA_SECRET_KEY || process.argv[3];
 
 if (!username || !secretkey) {
-  console.error("Missing RetroAchievements credentials. Set RA_USERNAME and RA_SECRET_KEY or pass them as arguments.");
+  console.error("Missing RetroAchievements configuration. Set RA_USERNAME as a variable and RA_SECRET_KEY as a secret, or pass them as arguments.");
   process.exit(1);
 }
 

@@ -8,6 +8,7 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    environment: RetroAchievements
 
     permissions:
       contents: write
@@ -17,11 +18,11 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Run update script
         env:
-          RA_USERNAME: ${{ secrets.RA_USERNAME }}
+          RA_USERNAME: ${{ vars.RA_USERNAME }}
           RA_SECRET_KEY: ${{ secrets.RA_SECRET_KEY }}
         run: node update.js
 
